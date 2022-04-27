@@ -97,13 +97,18 @@ create table customersTarea(
 
 --8.- Qué colaboradores chambearon durante las fiestas de navidad?
 
---Intento fallido 1- PREGUNTAR
+-- Alternativo
 --select e.first_name, e.last_name from orders o inner join employees e  on (e.employee_id=o.employee_id)
 --where date_part(day,o.shipped_date) = 24 and date_part(day, o.shipped_date)=25 and date_part(month,o.shipped_date) =12;  
 
---Considerando el 24 y el 25 juntos--
+--Considerando que un colaborador trabajo un 24 o un 25--
 select e.first_name, e.last_name, e.employee_id  from orders o inner join employees e  on (e.employee_id=o.employee_id)
 where extract (day from o.shipped_date)=24 or extract (day from o.shipped_date)= 25 and extract (month from o.shipped_date)=12
+group by e.employee_id;
+
+--Considerando que un colaborador trabajo el 24 y el 25--
+select e.first_name, e.last_name, e.employee_id  from orders o inner join employees e  on (e.employee_id=o.employee_id)
+where extract (day from o.shipped_date)=24 and extract (day from o.shipped_date)= 25 and extract (month from o.shipped_date)=12
 group by e.employee_id;
 
 --Esto considerando solo el 25--
