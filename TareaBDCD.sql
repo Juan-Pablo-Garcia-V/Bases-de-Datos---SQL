@@ -4,11 +4,12 @@
 --1era Parte
 
 -- 1.- Qué contactos de proveedores tienen la posición de sales representative?
-select contact_name from suppliers s where contact_title in ('Sales Representative');
+--Añadí numero por si la persona gusta contactarla. 
+select contact_name, phone from suppliers s where contact_title in ('Sales Representative');
 
 
 --2.- Qué contactos de proveedores no son marketing managers?
-select contact_name from suppliers s 
+select contact_name, phone from suppliers s 
 where contact_title not in ('Marketing Manager');
 
 
